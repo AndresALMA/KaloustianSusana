@@ -974,6 +974,14 @@ a.contact-value:hover {
     gap: 2rem;
   }
 
+  .hero-bg-videos {
+    bottom: auto;
+    height: 82vh;
+    height: 82svh;
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  }
+
   .hero-copy {
     padding-bottom: 1rem;
     max-width: 720px;
@@ -1015,8 +1023,13 @@ a.contact-value:hover {
     --header-h: 4.5rem;
   }
 
+  .hero-bg-videos {
+    height: 68vh;
+    height: 68svh;
+  }
+
   .hero-bg-video.is-active {
-    opacity: 0.7;
+    opacity: 0.85;
   }
 
   .wrap {
@@ -1131,6 +1144,15 @@ a.contact-value:hover {
   .credential-card {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-bg-videos {
+    inset: 0;
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
