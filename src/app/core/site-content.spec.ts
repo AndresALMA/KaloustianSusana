@@ -7,8 +7,26 @@ describe('site content trust boundary', () => {
     expect(Object.isFrozen(site)).toBe(true);
   });
 
-  it('contains only the three real SPA sections in navigation', () => {
-    expect(site.nav.map((item) => item.href)).toEqual(['#inicio', '#servicios', '#contacto']);
+  it('contains the four real SPA sections in navigation', () => {
+    expect(site.nav.map((item) => item.href)).toEqual([
+      '#inicio',
+      '#respaldo',
+      '#servicios',
+      '#contacto',
+    ]);
+  });
+
+  it('exposes the CPMCP verification link and only CPMCP legal sources', () => {
+    expect(site.cpmcpVerificationUrl).toContain('cpmcp.org.ar');
+    expect(site.legalNotice).toContain('CPMCP');
+    expect(site.legalLinks).toHaveLength(2);
+    expect(site.legalLinks.every((link) => link.href.includes('cpmcp.org.ar'))).toBe(true);
+    expect(site.domicilio).toContain('a completar');
+  });
+
+  it('serves every service image and the hero poster locally', () => {
+    expect(site.heroPoster.src).toContain('images/hero-property.jpg');
+    expect(site.services.every((service) => service.image.startsWith('images/'))).toBe(true);
   });
 
   it('exposes the three Opción 1 services with unique ids', () => {

@@ -12,6 +12,8 @@
   --text-inverse-muted: rgba(248, 246, 242, 0.78);
   --accent: #b8924f;
   --accent-deep: #96753a;
+  --accent-ink: #7a5b2a;
+  --accent-ink-deep: #5e431b;
   --accent-soft: rgba(184, 146, 79, 0.14);
   --line: rgba(15, 28, 46, 0.1);
   --line-inverse: rgba(248, 246, 242, 0.14);
@@ -79,7 +81,7 @@ h3 {
   z-index: 1000;
   padding: 0.75rem 1rem;
   background: var(--accent);
-  color: #fff;
+  color: #0f1c2e;
   text-decoration: none;
 }
 
@@ -102,7 +104,7 @@ h3 {
 }
 
 .eyebrow-dark {
-  color: var(--accent-deep);
+  color: var(--accent-ink);
 }
 
 .btn {
@@ -142,21 +144,32 @@ h3 {
 .nav a:focus-visible,
 .contact-value:focus-visible,
 .contact-channel:focus-visible,
+.trust-link:focus-visible,
 .footer-contact a:focus-visible,
+.footer-credential a:focus-visible,
+.footer-legal-links a:focus-visible,
 .skip-link:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--accent-ink);
   outline-offset: 3px;
+}
+
+.site-header a:focus-visible,
+.hero a:focus-visible,
+.section-contact a:focus-visible,
+.site-footer a:focus-visible {
+  outline-color: #e8c98f;
 }
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: #0f1c2e;
   border-color: var(--accent);
 }
 
 .btn-primary:hover {
-  background: var(--accent-deep);
-  border-color: var(--accent-deep);
+  background: var(--accent-ink);
+  color: #fff;
+  border-color: var(--accent-ink);
 }
 
 .btn-secondary {
@@ -440,6 +453,18 @@ h3 {
   text-transform: uppercase;
 }
 
+.credential-card-link {
+  display: inline-block;
+  color: var(--accent-ink);
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.credential-card-link:hover {
+  text-decoration: underline;
+}
+
 /* Sections / Services */
 .section {
   padding: 6rem 0;
@@ -507,7 +532,7 @@ h3 {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--accent-deep);
+  color: var(--accent-ink);
   margin-bottom: 1.5rem;
 }
 
@@ -542,7 +567,7 @@ h3 {
   margin: 0;
   padding: 0.35rem 0.6rem;
   background: rgba(255, 253, 249, 0.94);
-  color: var(--accent-deep);
+  color: var(--accent-ink);
 }
 
 .service-card-body {
@@ -554,7 +579,7 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-deep);
+  color: var(--accent-ink);
   margin-bottom: 0.6rem;
 }
 
@@ -584,6 +609,89 @@ h3 {
 
 .card:hover .card-line {
   width: 4rem;
+}
+
+/* Trust / CPI verification */
+.section-trust {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.trust-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.trust-copy .section-lead {
+  max-width: 44rem;
+  margin-bottom: 1.75rem;
+}
+
+.trust-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-ink);
+  border-bottom: 1px solid var(--accent-ink);
+  padding-bottom: 0.35rem;
+}
+
+.trust-link:hover {
+  color: var(--accent-ink-deep);
+}
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.trust-badge img {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.trust-badge-license {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trust-badge-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 /* Contact */
@@ -736,8 +844,24 @@ h3 {
   line-height: 1.5;
 }
 
+.contact-note {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #e8c98f;
+}
+
+.contact-note:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 a.contact-value:hover {
-  color: var(--accent);
+  color: #e8c98f;
 }
 
 /* Footer */
@@ -792,11 +916,59 @@ a.contact-value:hover {
   color: var(--text-inverse);
 }
 
+.footer-credential {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.footer-credential img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #fff;
+  padding: 0.25rem;
+}
+
+.footer-credential span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-inverse-muted);
+}
+
 .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1.25rem 0;
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   color: rgba(247, 244, 239, 0.5);
+}
+
+.footer-legal {
+  max-width: 62rem;
+  line-height: 1.6;
+}
+
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-legal-links a {
+  color: #e8c98f;
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Responsive */
@@ -830,6 +1002,15 @@ a.contact-value:hover {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .trust-badge {
+    justify-self: center;
   }
 }
 
@@ -933,6 +1114,11 @@ a.contact-value:hover {
 
   .footer-contact {
     align-items: flex-start;
+  }
+
+  .footer-credential {
+    align-items: flex-start;
+    text-align: left;
   }
 }
 

@@ -1,0 +1,30 @@
+<section class="section section-trust" id="respaldo">
+  <div class="wrap trust-grid">
+    <div class="trust-copy">
+      <p class="eyebrow eyebrow-dark">{{ content.site.trust.eyebrow }}</p>
+      <h2>{{ content.site.trust.heading }}</h2>
+      <p class="section-lead">{{ content.site.trust.lead }}</p>
+      <a
+        class="trust-link"
+        [href]="content.site.cpmcpVerificationUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ content.site.trust.verificationLabel }}
+        <span aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+
+    <div class="trust-badge">
+      <img
+        [src]="content.site.colegioLogo.src"
+        [alt]="content.site.colegioLogo.alt"
+        width="180"
+        height="180"
+        loading="lazy"
+      />
+      <p class="trust-badge-license">{{ content.site.license }}</p>
+      <p class="trust-badge-name">{{ content.site.professionalName }}</p>
+    </div>
+  </div>
+</section>

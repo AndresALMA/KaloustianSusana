@@ -4,6 +4,7 @@ import { FooterComponent } from './features/footer/footer.component';
 import { HeaderComponent } from './features/header/header.component';
 import { HeroComponent } from './features/hero/hero.component';
 import { ServicesComponent } from './features/services/services.component';
+import { TrustComponent } from './features/trust/trust.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { ServicesComponent } from './features/services/services.component';
   imports: [
     HeaderComponent,
     HeroComponent,
+    TrustComponent,
     ServicesComponent,
     ContactComponent,
     FooterComponent,

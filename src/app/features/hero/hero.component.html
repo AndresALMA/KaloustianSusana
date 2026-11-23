@@ -13,6 +13,7 @@
       [attr.webkit-playsinline]="''"
       preload="auto"
       [src]="content.site.heroVideos[0]"
+      [attr.poster]="content.site.heroPoster.src"
     ></video>
     <video
       #bgVideo
@@ -23,6 +24,7 @@
       [attr.webkit-playsinline]="''"
       preload="auto"
       [src]="content.site.heroVideos[1]"
+      [attr.poster]="content.site.heroPoster.src"
     ></video>
   </div>
   <div class="hero-bg" aria-hidden="true"></div>
@@ -51,10 +53,6 @@
         <div class="credential">
           <span class="credential-label">Matrícula</span>
           <span class="credential-value">{{ content.site.license }}</span>
-        </div>
-        <div class="credential">
-          <span class="credential-label">Atención</span>
-          <span class="credential-value">Personalizada y directa</span>
         </div>
         <div class="credential">
           <span class="credential-label">Contacto</span>
@@ -86,7 +84,15 @@
         <div>
           <p class="credential-card-name">{{ content.site.professionalName }}</p>
           <p class="credential-card-meta">{{ content.site.title }}</p>
-          <p class="credential-card-meta">{{ content.site.license }}</p>
+          <a
+            class="credential-card-meta credential-card-link"
+            [href]="content.site.cpmcpVerificationUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="'Verificar ' + content.site.license + ' en el padrón del CPMCP'"
+          >
+            {{ content.site.license }} &#8599;
+          </a>
         </div>
       </div>
     </div>

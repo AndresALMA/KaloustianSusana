@@ -8,8 +8,8 @@
       <p class="eyebrow">Contacto</p>
       <h2>Hablemos de tu próxima decisión</h2>
       <p class="contact-lead">
-        Si necesitás tasar, administrar o recibir asesoramiento inmobiliario, estoy disponible para
-        ayudarte con una atención clara, profesional y personalizada.
+        Si necesitás tasar, administrar o recibir asesoramiento inmobiliario, este es el canal
+        directo con la profesional responsable del estudio.
       </p>
 
       <div class="contact-actions flex flex-wrap">
@@ -44,7 +44,7 @@
           />
           <span class="contact-channel-body">
             <strong>WhatsApp</strong>
-            <span>Respuesta rápida y directa</span>
+            <span>Contacto directo con la profesional</span>
           </span>
         </a>
         <a class="contact-channel contact-channel--mail" [href]="content.mailtoUrl">
@@ -83,13 +83,29 @@
         <a class="contact-value" [href]="content.mailtoUrl">{{ content.site.email }}</a>
       </div>
       <div class="contact-item">
-        <span class="contact-label"><app-license-icon /> Matrícula</span>
-        <span class="contact-value">{{ content.site.license }}</span>
+        <span class="contact-label"><app-license-icon /> Datos profesionales</span>
+        <span class="contact-value">
+          {{ content.site.professionalName }} · {{ content.site.license }}
+        </span>
+        <a
+          class="contact-note"
+          [href]="content.site.cpmcpVerificationUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Verificar en el CPMCP &#8599;
+        </a>
       </div>
       <div class="contact-item">
-        <span class="contact-label"><app-location-icon /> Ubicación</span>
+        <span class="contact-label"><app-location-icon /> Zona de atención</span>
         <span class="contact-value">{{ content.site.location }}</span>
       </div>
+      @if (content.site.domicilio) {
+        <div class="contact-item">
+          <span class="contact-label"><app-location-icon /> Domicilio profesional</span>
+          <span class="contact-value">{{ content.site.domicilio }}</span>
+        </div>
+      }
     </div>
   </div>
 </section>
