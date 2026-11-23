@@ -22,12 +22,12 @@ const OVERLAP_SECONDS = 1.5;
 export class HeroComponent {
   protected readonly content = inject(SiteContentService);
   protected readonly activeVideo = signal(0);
-  protected readonly reducedMotion = signal(false);
 
   private readonly destroyRef = inject(DestroyRef);
   private readonly videoRefs = viewChildren<ElementRef<HTMLVideoElement>>('bgVideo');
   private readonly abortController = new AbortController();
   private videos: readonly HTMLVideoElement[] = [];
+  private readonly failedVideos = new Set<HTMLVideoElement>();
   private switching = false;
   private pauseTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -41,10 +41,7 @@ export class HeroComponent {
       .map((ref) => ref.nativeElement)
       .filter((video): video is HTMLVideoElement => video instanceof HTMLVideoElement);
 
-    if (this.videos.length < 2 || this.prefersReducedMotion()) {
-      this.reducedMotion.set(this.prefersReducedMotion());
-      return;
-    }
+    if (this.videos.length < 2) return;
 
     this.tryPlay(this.currentVideo());
 
@@ -54,6 +51,9 @@ export class HeroComponent {
     };
 
     for (const video of this.videos) {
+      video.addEventListener('loadeddata', () => this.retryIfCurrent(video), options);
+      video.addEventListener('canplay', () => this.retryIfCurrent(video), options);
+      video.addEventListener('error', () => this.handleVideoError(video), options);
       video.addEventListener('timeupdate', () => this.handleTimeUpdate(video), options);
       video.addEventListener('ended', () => this.swap(video), options);
     }
@@ -71,6 +71,23 @@ export class HeroComponent {
     window.addEventListener('touchstart', resume, options);
     window.addEventListener('click', resume, options);
     window.addEventListener('scroll', resume, options);
+  }
+
+  private retryIfCurrent(video: HTMLVideoElement): void {
+    if (video === this.currentVideo() && !this.failedVideos.has(video)) this.tryPlay(video);
+  }
+
+  private handleVideoError(video: HTMLVideoElement): void {
+    if (this.failedVideos.has(video)) return;
+    this.failedVideos.add(video);
+    if (video !== this.currentVideo() || this.switching) return;
+
+    const nextIndex = (this.activeVideo() + 1) % this.videos.length;
+    const next = this.videos[nextIndex];
+    if (!next || this.failedVideos.has(next)) return;
+
+    this.activeVideo.set(nextIndex);
+    this.tryPlay(next);
   }
 
   private handleTimeUpdate(video: HTMLVideoElement): void {
@@ -118,14 +135,6 @@ export class HeroComponent {
       if (playback) void playback.catch(() => undefined);
     } catch {
       // Media playback is optional; the gradient background remains visible.
-    }
-  }
-
-  private prefersReducedMotion(): boolean {
-    try {
-      return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    } catch {
-      return false;
     }
   }
 

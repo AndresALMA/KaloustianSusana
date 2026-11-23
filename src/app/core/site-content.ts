@@ -161,7 +161,7 @@ const rawContent: z.input<typeof siteSchema> = {
   ],
   heroVideos: [
     resolveAsset('videospublic/Casa_en_campo_en_otoño_053568e1.mp4'),
-    resolveAsset('videospublic/Modern_minimalist_house_panning_…_65de1142.mp4'),
+    resolveAsset('videospublic/Modern_minimalist_house_panning_…_65de1142_scrub.mp4'),
   ],
   heroPoster: {
     src: resolveAsset('images/hero-property.jpg'),
