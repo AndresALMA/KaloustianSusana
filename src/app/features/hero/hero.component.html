@@ -1,0 +1,94 @@
+<section class="hero" id="inicio">
+  <div
+    class="hero-bg-videos"
+    [class.is-static]="reducedMotion()"
+    aria-hidden="true"
+  >
+    <video
+      #bgVideo
+      class="hero-bg-video"
+      [class.is-active]="activeVideo() === 0"
+      muted
+      playsinline
+      [attr.webkit-playsinline]="''"
+      preload="auto"
+      [src]="content.site.heroVideos[0]"
+    ></video>
+    <video
+      #bgVideo
+      class="hero-bg-video"
+      [class.is-active]="activeVideo() === 1"
+      muted
+      playsinline
+      [attr.webkit-playsinline]="''"
+      preload="auto"
+      [src]="content.site.heroVideos[1]"
+    ></video>
+  </div>
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ content.site.location }} · {{ content.site.license }}</p>
+      <h1>{{ content.site.professionalName }}</h1>
+      <p class="hero-title">{{ content.site.title }}</p>
+      <p class="hero-lead">{{ content.site.tagline }}</p>
+
+      <div class="hero-actions flex flex-wrap">
+        <a
+          class="btn btn-primary"
+          [href]="content.whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-whatsapp-icon />
+          Consultar por WhatsApp
+        </a>
+        <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+      </div>
+
+      <div class="hero-credentials flex flex-wrap">
+        <div class="credential">
+          <span class="credential-label">Matrícula</span>
+          <span class="credential-value">{{ content.site.license }}</span>
+        </div>
+        <div class="credential">
+          <span class="credential-label">Atención</span>
+          <span class="credential-value">Personalizada y directa</span>
+        </div>
+        <div class="credential">
+          <span class="credential-label">Contacto</span>
+          <span class="credential-value">{{ content.site.phoneDisplay }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="portrait-frame">
+        <img
+          class="portrait"
+          [src]="content.site.photo.src"
+          [alt]="content.site.photo.alt"
+          width="840"
+          height="1050"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="credential-card flex items-center">
+        <img
+          class="credential-logo"
+          [src]="content.site.colegioLogo.src"
+          [alt]="content.site.colegioLogo.alt"
+          width="160"
+          height="160"
+        />
+        <div>
+          <p class="credential-card-name">{{ content.site.professionalName }}</p>
+          <p class="credential-card-meta">{{ content.site.title }}</p>
+          <p class="credential-card-meta">{{ content.site.license }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

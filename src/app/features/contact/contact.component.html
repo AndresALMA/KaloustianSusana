@@ -1,0 +1,95 @@
+<section
+  class="section section-contact"
+  id="contacto"
+  [style.--contact-image]="'url(' + content.site.contactBackground + ')'"
+>
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow">Contacto</p>
+      <h2>Hablemos de tu próxima decisión</h2>
+      <p class="contact-lead">
+        Si necesitás tasar, administrar o recibir asesoramiento inmobiliario, estoy disponible para
+        ayudarte con una atención clara, profesional y personalizada.
+      </p>
+
+      <div class="contact-actions flex flex-wrap">
+        <a
+          class="btn btn-primary"
+          [href]="content.whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-whatsapp-icon />
+          Escribir por WhatsApp
+        </a>
+        <a class="btn btn-secondary" [href]="content.mailtoUrl">
+          <app-mail-icon />
+          Enviar correo
+        </a>
+      </div>
+
+      <div class="contact-channels" aria-label="Canales de contacto">
+        <a
+          class="contact-channel contact-channel--wa"
+          [href]="content.whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            [src]="content.site.contactIcons.whatsapp"
+            alt=""
+            width="88"
+            height="88"
+            loading="lazy"
+          />
+          <span class="contact-channel-body">
+            <strong>WhatsApp</strong>
+            <span>Respuesta rápida y directa</span>
+          </span>
+        </a>
+        <a class="contact-channel contact-channel--mail" [href]="content.mailtoUrl">
+          <img
+            [src]="content.site.contactIcons.email"
+            alt=""
+            width="88"
+            height="88"
+            loading="lazy"
+          />
+          <span class="contact-channel-body">
+            <strong>Correo electrónico</strong>
+            <span>Consultas detalladas y documentación</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-panel">
+      <div class="contact-item">
+        <span class="contact-label">
+          <app-whatsapp-icon />
+          WhatsApp / Teléfono
+        </span>
+        <a
+          class="contact-value"
+          [href]="content.whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ content.site.phoneDisplay }}
+        </a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label"><app-mail-icon /> Correo electrónico</span>
+        <a class="contact-value" [href]="content.mailtoUrl">{{ content.site.email }}</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label"><app-license-icon /> Matrícula</span>
+        <span class="contact-value">{{ content.site.license }}</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label"><app-location-icon /> Ubicación</span>
+        <span class="contact-value">{{ content.site.location }}</span>
+      </div>
+    </div>
+  </div>
+</section>
