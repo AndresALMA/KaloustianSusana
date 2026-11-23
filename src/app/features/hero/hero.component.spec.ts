@@ -18,7 +18,10 @@ describe('HeroComponent', () => {
     expect(videos[0]?.src).toContain('videospublic/');
     expect(videos[1]?.src).toContain('videospublic/');
     expect(videos[0]?.muted).toBe(true);
+    expect(videos[0]?.autoplay).toBe(true);
     expect(videos[0]?.getAttribute('poster')).toContain('images/hero-property.jpg');
+    expect(root.querySelector('img.hero-fallback')).not.toBeNull();
+    expect(root.querySelector('.hero-bg-videos img.hero-fallback')).toBeNull();
     expect(root.querySelector('.credential-card a[href*="cpmcp.org.ar"]')).not.toBeNull();
 
     expect(root.querySelector('h1')?.textContent).toContain('Susana Kaloustian');

@@ -67,6 +67,7 @@ export class HeroComponent {
     );
 
     const resume = (): void => this.tryPlay(this.currentVideo());
+    window.addEventListener('pointerdown', resume, options);
     window.addEventListener('touchstart', resume, options);
     window.addEventListener('click', resume, options);
     window.addEventListener('scroll', resume, options);

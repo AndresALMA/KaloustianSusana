@@ -1,4 +1,10 @@
 <section class="hero" id="inicio">
+  <img
+    class="hero-fallback"
+    [src]="content.site.heroPoster.src"
+    alt=""
+    aria-hidden="true"
+  />
   <div
     class="hero-bg-videos"
     [class.is-static]="reducedMotion()"
@@ -8,6 +14,7 @@
       #bgVideo
       class="hero-bg-video"
       [class.is-active]="activeVideo() === 0"
+      autoplay
       muted
       playsinline
       [attr.webkit-playsinline]="''"
